@@ -24,11 +24,16 @@ let days_for_every_month (month : int) (year : int) : int = match month with
 
 let rec sum_of_days (day : int) (month : int) (year : int): int =  if month = 1
                                                                     then day
-                                                                   else day + sum_of_days (days_for_every_month(month-1)) ( month - 1);;
+                                                                   else day + sum_of_days (days_for_every_month(month-1) (year)) ( month - 1) year;;
+
+let is_bisestile_year (year: int) : int = if ((year % 4 = 0) || (year % 400 = 0) || (year % 100 = 0))
+                                            then 365
+                                          else 366;;
 
 
-let data_difference (day1 : int) (month1 : int) (year1 : int) (day2 : int) (month2 : int) (year2 : int) : int =  (year1 - year2) * 365 + ((sum_of_days day1 month1) - (sum_of_days day2 month2));;
-
+let data_difference (day1 : int) (month1 : int) (year1 : int) (day2 : int) (month2 : int) (year2 : int) : int =  if (year1 = year2)
+                                                                                                                  then ((sum_of_days day1 month1 year1) - (sum_of_days day2 month2 year2))
+                                                                                                                 else 0;;
 
 
 let data_to_day (day : int) (month : int) (year : int) : int = (sum_of_days day month);;
