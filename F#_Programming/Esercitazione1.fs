@@ -2,21 +2,12 @@ module Esercitazione1
 
 (*
 Convenzioni
-
 Le seguenti convenzioni sono da ritenersi vincolanti affinché la vostra soluzione venga considerata corretta!
-
 La durata di un ciclo lunare è pari a ESATTAMENTE 29 giorni.
-
 Ipotizziate che il 1 gennaio del 2000 fosse l'inizio di un ciclo lunare (ci fosse quindi la Luna Nuova e il giorno corrispondente del ciclo lunare fosse 0).
-
 La durata dei mesi è quella del calendario Gregoriano NON ci sono però gli anni bisestili.
-
-
-
 Esercizio 1:
-
 Data una data gg/mm/aaaa, definita come segue:
-
 Il numero	corrisponde a      	con le limitazioni
 gg	giorno del mese	da 1 a 31
 mm	mese dell'anno
@@ -25,50 +16,24 @@ aaaa	cifre dell'anno
 da 0 in avanti
 si richiede di scrivere una funzione che:
 presi in input i numeri che compongono la data, restituisca come output il numero del giorno rappresentato dalla data all'interno dell'anno (quindi un numero compreso tra 1 e 365).
-
-
 Esempio:
-
 data_to_day 10 1 1989 ==> 10
 data_to_day 15 12 1988 ==> 349
-
-
 Firma:
-
 data_to_day: int -> int -> int -> int
-
-
-
 Esercizio 2:
 Date due date gg/mm/aaaa, definite come il primo esercizio si richiede di scrivere una funzione che:
 presi in input i numeri che compongono le due date, restituisca come output la differenza in giorni tra le due date.
-
-
 Esempio:
-
-
 data_difference 3 1 2012 1 1 2012 ==> 2
 data_difference 10 1 1989 15 12 1988 ==> 26
-
 data_difference 30 9 2015 8 10 2015 ==> -8
-
 data_difference 8 10 2015 8 10 2015 ==> 0
-
 data_difference 6 1 2001 1 1 2000 ==> 370
-
-
-
 Firma:
-
 data_difference: int -> int -> int -> int -> int -> int -> int
-
-
-
 Esercizio 3:
-
 Data una data gg/mm/aaaa, definita come il primo esercizio e le fasi lunari definite come segue:
-
-
 (Fase) (Intervallo Giorni) (Codice)
 Luna Nuova 0 - 3	 LN
 Luna Crescente 4 - 6 LR
@@ -78,24 +43,13 @@ Luna Piena 15 - 18 LP
 Gibbosa Calante 19 - 21 GA
 Ultimo Quarto 22 - 25 UQ
 Luna Calante 26 - 28 LA
-
 si richiede di scrivere una funzione che:
 presi in input i numeri che compongono la data, restituisca come output il codice della fase lunare corrispondente.
-
 NOTA BENE il codice della fase lunare è richiesto essere scritto in MAIUSCOLO (è key sensitive)
-
 Esempio:
-
 lunar_cycle 10 1 2000 ==> 'PQ'
-
 Firma:
-
 lunar_cycle: int -> int -> int -> string
-
-
-
-
-
 *)
 
 let NomeCognome : string = "Francesco Benetello"
