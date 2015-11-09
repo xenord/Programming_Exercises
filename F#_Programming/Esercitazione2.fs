@@ -106,7 +106,7 @@ let days_for_every_month (month : int) (year : int) : int = match month with
                                                               |12 -> 31
                                                               |_ -> failwith("This isn't a month!");;
 
-let rec sum_of_days (day : int) (month : int) (year : int): int =  if month = 1
+ (*let rec sum_of_days (day : int) (month : int) (year : int): int =  if month = 1
                                                                     then day
                                                                    else day + sum_of_days (days_for_every_month(month-1) (year)) ( month - 1) year;;
 
@@ -122,7 +122,7 @@ let rec sum_bisestile_year_and_not (day1 : int) (month1 : int) (year1 : int) (da
 
 let rec data_difference (year1 : int) (year2 : int) : int = if (year1 = year2)
                                                                         then is_bisestile_year(year1)
-                                                                       else data_difference(year1 (is_bisestile_year(year2))) year1 year2 + 1;;
+                                                                       else data_difference(year1 (is_bisestile_year(year2))) year1 year2 + 1;; *)
 
 
 (*let data_to_day (day : int) (month : int) (year : int) : int = (sum_of_days day month);;
