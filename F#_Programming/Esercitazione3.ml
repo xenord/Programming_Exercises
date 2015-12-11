@@ -26,6 +26,9 @@ Esercizio 3:
 
 Firma:  mode: int list -> int
 *)
+
+module List
+module Sort
 let elem_counter (xs : int list) : int = let rec elem_counter_aus (s : int) (xs : int list) : int = match xs with
                                                                                                     |[] -> s
                                                                                                     |_ :: xs -> elem_counter_aus (s+1) xs
@@ -50,7 +53,7 @@ let rec sum_fract (xs : int list) : int =  match xs with
                                               |[s] -> 1/s
                                               |s :: xs -> 1/s + (sum_fract xs);;
 
-(*let harmonic_mean (xs : int list) : int = elem_counter xs / sum_fract xs;; *)
+let harmonic_mean (xs : int list) : int = elem_counter xs / sum_fract xs;;
 
 
 
@@ -71,9 +74,20 @@ let rec max (l : int list) : int = match l with
 (*let min_max (l : int list) : (int * int) = min(l) * max(l);; (* Da provare! *) *)
 
 
-let occurences_counter (l : int list) : int = let rec aus_fun (l : int list) (n : int) : int = match l with
-                                                                                                |[] -> failwith "The list is empty"
-                                                                                                |[hd] -> 1
-                                                                                                |hd :: hd2 :: l -> if hd = hd2 then aus_fun l            else aus_fun hd2 :: list
-                                              in aus_fun l 0;;
-let rec mode (l : int list) : int = 0
+let rec occurences_counter xs i =  match xs with
+                                    |[] -> 0
+                                    |x :: xs when x = i -> 1 + occurences_counter xs i
+                                    |x :: xs -> occurences_counter xs i;;
+
+let rec sort lst = match lst with
+                    |[] -> []
+                    | head :: tail -> insert head (sort tail)
+                     and insert elt lst = match lst with
+                                            [] -> [elt]
+                                            | head :: tail -> if elt <= head then elt :: lst else head :: insert elt tail;;
+
+let rec mode (l : int list) : int = match l with
+                                     |[] -> failwith "Error"
+                                     |[x] -> x
+                                     |x::y::l when occurences_counter l x >=  occurences_counter l y -> mode (x :: l)
+                                     |x::y::l when occurences_counter l x < occurences_counter l y -> mode (y :: l);;
