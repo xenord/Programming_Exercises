@@ -14,11 +14,10 @@ public class creaThread extends Thread {
         int i;
         try {
             for(i=0; i<5; i++) {
-                System.out.println("Sono " +getName()+ " LEGGO!");
                 contatore.leggiContatore();
             }
         } catch (InterruptedException e) {
-            System.out.println("Cacca");
+            System.out.println("Fallito!");
         }
     }
 
@@ -31,11 +30,11 @@ public class creaThread extends Thread {
         /* Crea Thread dalla classe ThreadDue */
         creaThreadDue threadDue = new creaThreadDue(monitorUno);
 
-        //Parte esecuzione Thread
+        //Parte esecuzione Threads
         threadUno.start();
         threadDue.start();
 
-        //Termina esecuzione Thread
+        //Termina esecuzione Threads
         threadUno.join();
         threadDue.join();
 
