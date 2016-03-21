@@ -171,11 +171,11 @@ public class Ferrari {
 
 		Ferrari ferrari = new Ferrari();
 		Mutex mutex = new Mutex(X,Y);
-		Officina officina = new Officina(QUANTE_AUTO*4);
-		NastroAuto nastroAuto = new NastroAuto(ferrari,officina);
-		NastroGomme nastroGommeLeft = new NastroGomme(ferrari,officina,1,FINE_NASTRO_GOMMA);
-		NastroGomme nastroGommeRight = new NastroGomme(ferrari,officina,-1,X-FINE_NASTRO_GOMMA);
-		Gommista[] gommista = new Gommista[QUANTE_AUTO*4];
+		Officina officina = new Officina(QUANTE_AUTO*4); // Monitor
+		NastroAuto nastroAuto = new NastroAuto(ferrari,officina); // Thread
+		NastroGomme nastroGommeLeft = new NastroGomme(ferrari,officina,1,FINE_NASTRO_GOMMA); //thread *
+		NastroGomme nastroGommeRight = new NastroGomme(ferrari,officina,-1,X-FINE_NASTRO_GOMMA); // thread *
+		Gommista[] gommista = new Gommista[QUANTE_AUTO*4]; // Thread
 		Stampa stampa = new Stampa(ferrari);
 
 		// crea i Thread gommisti con le coordinate corrette

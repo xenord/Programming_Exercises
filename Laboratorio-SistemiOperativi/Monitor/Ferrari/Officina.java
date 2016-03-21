@@ -77,7 +77,7 @@ public class Officina {
 
 	// il gommista id attende l'arrivo della gomma. I gommisti con id pari attendono dal
 	// nastro di destra 0, quelli con id dispari dal nastro di sinistra 1
-	public synchronized void attendiGomma(int id) throws InterruptedException {
+	public synchronized void attendiGomma(int id) throws InterruptedException {  //Thread Gommista
         while (fineNastro[id%2] == false) {
             wait();
         }
@@ -85,7 +85,7 @@ public class Officina {
 	}
 
 	// il gommista id notifica che ha prelevato una gomma dal proprio nastro
-	public synchronized void prelevataGomma(int id) {
+	public synchronized void prelevataGomma(int id) {  //Thread Gommista
         fineNastro[id%2] = false;
         notifyAll();
 
@@ -93,25 +93,32 @@ public class Officina {
 
 	// la gomma è arrivata a fine nastro n e attende di essere prelevata da un gommista
 	// n vale 0 per il nastro di destra e 1 per il nastro di sinistra
-	public synchronized void gommaFineNastro(int n) throws InterruptedException {
-        while(fineNastro[n%2] == false) {
-            wait();
-        }
+	public synchronized void gommaFineNastro(int n) throws InterruptedException { //Thread NastroGomme
+		fineNastro[n] = true;
+		notifyAll();
 
+		while (fineNastro[n]) {
+			wait();
+		}
 	}
 
 	// il gommista id attende che l'auto arrivi
-	public synchronized void attendiAuto(int id) throws InterruptedException {
+	public synchronized void attendiAuto(int id) throws InterruptedException { //Thread Gommista
+		while (!macchineArrivate || gomme[id]) {
+				wait();
+			}
 
 	}
 
 	// il gommista id ha montato la sua gomma
-	public synchronized void gommaMontata(int id) {
+	public synchronized void gommaMontata(int id) { //Thread Gommista
+		gomme[id] = true;
+		notifyAll();
 
 	}
 
 	// le auto sono in posizione e attendono il montaggio delle gomme
-	public synchronized void attendiMontaggioGomme() throws InterruptedException {
+	public synchronized void attendiMontaggioGomme() throws InterruptedException { // Thread NastroAuto
             macchineArrivate = true;
             notify();
             int i=0;
