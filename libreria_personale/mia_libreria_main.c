@@ -8,17 +8,21 @@
 int main() {
 
     int scelta;
-    printf("\n");
-    printf("<------------------------------------------------>\n");
-    printf("\n");
-    printf("0  Factorial  \n");
-    printf("1  Strings prefix  \n");
-    printf("2  M.C.D.  \n");
-	printf("3  Togli spazi  \n");
-    printf("\n");
-    printf("<------------------------------------------------>\n");
-    printf("\n");
-    printf("Choose: ");
+    char c;
+    FILE *strings_eng;
+    
+    strings_eng = fopen("strings_eng.txt", "r");
+    if (strings_eng == NULL) {
+        printf("Error open file!");
+        printf("Insert a valid txt file");
+    }
+    else {
+        while((c=fgetc(strings_eng))!=EOF) {
+            printf("%c", c);
+        }
+        fclose(strings_eng);
+    }
+    printf("Enter option: ");
     scanf("%d", &scelta);
     fflush(stdout);  /* Clean buffer after printf series */
     getc(stdin);
@@ -81,7 +85,7 @@ int main() {
 
 			case 3:
 				printf("You have selected togli spazi.\n");
-				char *s1 = NULL;
+				char *string1 = NULL;
 				dim = 30;
 				pdim = &dim;
 				printf("Insert a string: ");
@@ -93,6 +97,7 @@ int main() {
 					printf("%c", s1[i]);
 					i++;
 				}
+				printf("\n");
 				break;
 			
             default:
