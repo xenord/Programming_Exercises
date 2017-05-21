@@ -21,7 +21,8 @@
  *
  */
 
-unsigned long int rec_fact(unsigned long int n) {  
+unsigned long int rec_fact(unsigned long int n) 
+{  
 	if (n == 0) {
 		return 0;
 	}
