@@ -120,7 +120,7 @@ class Sommatori extends Thread {
 		try {
 			for (int i=0; i<g.N; i++) {
 				m.attendiRicezione();
-				this.ricevuto = 
+				ricevuto = m.getRandomNumber();
 				System.out.println("["+identificativo_thread+"] Numero ricevuto: " + ricevuto);
 				this.setContatore(ricevuto);
 				m.notificaRicezione();

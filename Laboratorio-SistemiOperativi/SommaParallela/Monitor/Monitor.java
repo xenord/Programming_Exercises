@@ -3,6 +3,15 @@ public class Monitor{
 	boolean ricevuto;
 	boolean spedito = true;
 	boolean somma;
+	int RandomNumber;
+
+	public void setRandomNumber(int i) {
+		this.RandomNumber = i;
+	}
+
+	public int getRandomNumber() {
+		return RandomNumber;
+	}
 
 
 	public synchronized void attendiRicezione() throws InterruptedException {
