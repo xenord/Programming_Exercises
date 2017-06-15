@@ -44,4 +44,28 @@ int append(int_list *pl, int elem)
 	}
 }
 
+int lstlen(int_list l)
+{
+	if (l == NULL) {
+		return 0;
+	}
+	else {
+		return 1+lstlen(l->next);
+	}
+}
+
+/*
+	l1 -> start list
+	l2 -> final list
+*/
+void lstcpy(int_list l1, int_list* l2)
+{
+	int elem;
+	while (l1) {
+		elem = l1->info;
+		append(l2,elem);
+		l1 = l1->next;
+	}
+}
+
 

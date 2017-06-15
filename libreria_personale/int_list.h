@@ -16,5 +16,7 @@ void stampa_lista_rec(int_list l);
 void stampa_lista_iter(int_list l);
 int prepend(int_list *pl, int elem);
 int append(int_list *pl, int elem);
+int lstlen(int_list l);
+void lstcpy(int_list l1, int_list* l2);
 
 #endif

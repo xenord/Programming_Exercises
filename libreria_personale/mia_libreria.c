@@ -9,6 +9,8 @@
 
 #include "mia_libreria.h"
 
+#define RIP 10
+
 /*
  * Per compilare usare il seguente comando:
  *   gcc -std=gnu89 -Wall -pedantic -o nome_eseguibile file_della_libreria.c file_normale.c
@@ -122,7 +124,7 @@ void togli_spazi (char str[])
         if (str[i] == ' '){  /* lo spazio vuoto viene indicato con b segnato detto anche blank */
             j = i + 1;
             while(str[j]) {
-                str[j-1] == str[j];
+                str[j-1] = str[j];
                 j++;
                 }
             str[j-1] = '\0';
@@ -165,4 +167,85 @@ int trova(char str1[], char str2[])
         }
         return str1[0] || str2[0] ? match : 0;
     }
+}
+
+/*
+ *  Funzione che data una stringa (costituita da caratteri minuscoli e punteggiatura)
+ *  restituisce il carattere con maggiori occorrenze
+ *  in "*rep" viene scritto le occorrenze
+ *
+ *
+ */
+
+/*
+osso
+
+i = 0
+frequenze[0] = 1
+caratteri[0] = o
+
+i = 1
+
+
+*/
+
+char ripetizioni(char str[], int* rep)
+{
+    int *item = (int*)malloc(sizeof(int)*10);
+    char *freq = (char*)malloc(sizeof(char)*10);
+    char frequent;
+    int segno;
+    int len = 0;
+    int j;
+    int i=0;
+    int flag = 0;
+
+    while(str[i] != '\0') {
+        if (i == 0) {
+            item[0] = str[0];
+            freq[0] = 1;
+            segno = 0;
+        }
+        else {
+            for (j = 0; j <= segno; j++) {
+                if (item[j] == str[i]) {
+                    freq[j] = freq[j] + 1;
+                    flag = 1;
+                }
+            }
+            if (flag == 0) {
+                segno = segno + 1;
+                item[segno] = str[i];
+                freq[segno] = 1;
+            }
+        }
+        i++;
+        flag = 0;
+    }
+
+
+    *rep = freq[0];
+
+    for (int i = 0; i <= segno; i++) {
+        if (freq[i] > *rep) {
+            *rep = freq[i];
+        }
+    }
+
+    int step = 0;
+    for (int i = 0; i < segno; i++) {
+        if (*rep == freq[i]) {
+            if (step == 0) {
+                frequent = item[i];
+                step++;
+            }
+            else if (((item)[i] < frequent) && (step > 0)) {
+                frequent = item[i];
+            }
+        }
+    }
+
+    free(item);
+    free(freq);
+    return frequent;
 }
