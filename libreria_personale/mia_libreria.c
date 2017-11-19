@@ -9,8 +9,6 @@
 
 #include "mia_libreria.h"
 
-#define RIP 10
-
 /*
  * Per compilare usare il seguente comando:
  *   gcc -std=gnu89 -Wall -pedantic -o nome_eseguibile file_della_libreria.c file_normale.c
@@ -172,22 +170,10 @@ int trova(char str1[], char str2[])
 /*
  *  Funzione che data una stringa (costituita da caratteri minuscoli e punteggiatura)
  *  restituisce il carattere con maggiori occorrenze
- *  in "*rep" viene scritto le occorrenze
- *
+ *  in "*rep" viene scritto le occorrenze e ritorna il primo carattere alfabeticamente
+ *  più frequente
  *
  */
-
-/*
-osso
-
-i = 0
-frequenze[0] = 1
-caratteri[0] = o
-
-i = 1
-
-
-*/
 
 char ripetizioni(char str[], int* rep)
 {
@@ -248,4 +234,51 @@ char ripetizioni(char str[], int* rep)
     free(item);
     free(freq);
     return frequent;
+}
+
+
+int palindroma(char *s)
+{
+    int i = 0;
+    int flag = 1;
+    togli_spazi(s);
+    int len = strlen(s);
+    int j;
+
+    if ((len%2) == 0) {
+        j = (len/2);
+        while (s[i] != (((len-1)/2) && j != (len-1))) {
+            if (s[i] == s[j]) {
+                flag++;
+            }
+            i++;
+            j--;
+        }
+
+        if (flag == (len/2)) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }   
+
+    else {
+        j = (len/2) + 1;
+
+        while (s[i] != (((len/2)-1) && j != (len-1))) {
+            if (s[i] == s[j]) {
+                flag++;
+            }
+            i++;
+            j--;
+        }
+        if (flag == (len/2)) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+
 }

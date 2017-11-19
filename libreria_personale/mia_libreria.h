@@ -8,5 +8,6 @@ int mcd(int x, int y);
 void togli_spazi (char str[]);
 //int trova(char str1[], char str2[]);
 char ripetizioni(char str[], int* rep);
+int palindroma(char *s);
 
 #endif

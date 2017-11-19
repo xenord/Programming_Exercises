@@ -5,26 +5,35 @@
 
 int main(int argc, char const *argv[])
 {
-	int_list lista;
+	int_list lista1;
 	int_list lista2;
-	lista = NULL;
-	int len = 0;
 
-	prepend(&lista, 1);
-	prepend(&lista, 2);
-	prepend(&lista, 3);
+	lista1 = NULL;
 
-	stampa_lista_iter(lista);
-	len = lstlen(lista);
-	printf("Lunghezza = %d\n", len);
+	/*
+	append(&lista1, 1000);
+	append(&lista1, 20);
+	append(&lista1, 15);
+	append(&lista1, 2);
+	append(&lista1, 3);
+	append(&lista1, 4);
+	*/
 
-	lstcpy(lista, &lista2);
-	printf("Stampo lista due\n");
-	stampa_lista_iter(lista2);
+	
+	append(&lista1, 1);
+	append(&lista1, 2);
+	append(&lista1, 3);
+	
+	stampa_lista_iter(lista1);
 
-	free(lista);
-	free(lista2);
+	//  MIA RISPOSTA: C
+	//  QUELLA CORRETTA: 
 
+	while(lista1 != NULL) {
+		int_list tmp = lista1->next;
+		free(lista1);
+		lista1 = tmp;
+	}
 
 	return 0;
 }

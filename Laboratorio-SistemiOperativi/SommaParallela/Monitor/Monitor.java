@@ -19,7 +19,6 @@ public class Monitor{
 			wait();
 		}
 		spedito = false;
-
 	}
 
 	public synchronized void notificaRicezione() {
