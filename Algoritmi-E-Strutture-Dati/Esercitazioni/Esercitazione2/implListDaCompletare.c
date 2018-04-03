@@ -46,10 +46,23 @@ int finelista(List l, Node n){
 
 /*post: restituisce l'ultimo nodo con chiave k, se esiste, altrimenti il FINELISTA */
 Node search(List l, char * k){
+	Node x = l->head;
+	Node cmp = NULL;
+
+	while (x != NULL) {
+		if (strcmp(x->key, k) == 0) {
+			cmp = x;
+		}
+		x = x->next;
+	}
+
+	if (cmp != NULL) {
+		return cmp;
+	}
 	return NULL;
 }
 
-/*pre: se x non e' il FINELISTA x e' un nodo della lista */ 
+/*pre: se x non e' il FINELISTA x e' un nodo della lista */
 /*post: 
   se x non e' il FINELISTA inserisce un nodo con chiave k nella lista come predecessore del nodo x, 
   altrimenti inserisce un nodo con chiave k come ultimo elemento della lista. 
@@ -162,7 +175,6 @@ List concatena(List l1, List l2){
 void intersezione(List l1, List l2){
 
 }
-
 
 void stampa_lista(List l) {
 	Node n = l->head;

@@ -17,14 +17,14 @@ int main(int argc, char const *argv[])
 	char k[] = "ciao";
 	new = insert(l, n, k);
 	
-	stampa_lista(l);
+	Node tmp = search(l, k);
 
-	printf("\n");
-
-	printf("DELETE\n");
-	delete(l, new);
-
-	stampa_lista(l);
+	if (tmp == NULL) {
+		printf("Non ho trovato nessuna corrispondenza\n");
+	}
+	else {
+		printf("Stringa trovata\n");
+	}
 
 	//stampa_lista(l);
 	return 0;
