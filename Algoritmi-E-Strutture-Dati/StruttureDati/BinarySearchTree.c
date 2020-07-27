@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "BinarySearchTree.h"
+#include "Queue.h"
 
 BinarySearchTree new_tree() 
 {
@@ -116,5 +117,19 @@ void tree_delete(BinarySearchTree t, Node z)
 		transplant(t, z, y);
 		y->left = z->left;
 		z->left->p = y;
+	}
+}
+
+void BreadthFirstSearch(Node n)
+{
+	Queue q = initqueue();
+	enqueue(q, n->key);
+	while (!emptyqueue(q)) {
+		QNode e = dequeue(q);
+		if (e != NULL) {
+			printf("%d\n", e->key);
+			enqueue(e, e->left);
+			enqueue(e, e->right);
+		}
 	}
 }
