@@ -36,6 +36,12 @@ int main() {
 	n = new_node(11);
 	tree_insert(t,n);
 
+	n = new_node(5);
+	tree_insert(t,n);
+
+	n = new_node(6);
+	tree_insert(t,n);
+
 	printf("# foglie: %d\n", isPari(t->root));
 	return 0;
 }
