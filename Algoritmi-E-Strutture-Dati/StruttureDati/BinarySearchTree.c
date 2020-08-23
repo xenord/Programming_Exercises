@@ -6,7 +6,8 @@
 BinarySearchTree new_tree() 
 {
 	BinarySearchTree t = NULL;
-	t = (BinarySearchTree)malloc(sizeof(struct tree *));
+	t = malloc(sizeof(struct tree *));
+	printf("Tree address: %p\n", (void*)t);
 	t->root = NULL;
 	return t;
 }
@@ -14,7 +15,9 @@ BinarySearchTree new_tree()
 Node new_node(int key) 
 {
 	Node n = NULL;
-	n = (Node)malloc(sizeof(struct node *));
+	n = malloc(sizeof(struct node *));
+	printf("Node address: %p\n", (void*)n);
+	printf("Save this %d\n", key);
 	n->key = key;
 	n->p = NULL;
 	n->left = NULL;
@@ -124,6 +127,7 @@ void preorder(Node n)
 {
 	if (n != NULL) {
 		printf("%d\n", n->key);
+		printf("Visit Node address: %p\n", (void*)n);
 		preorder(n->left);
 		preorder(n->right);
 	}

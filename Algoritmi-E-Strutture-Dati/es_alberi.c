@@ -27,33 +27,36 @@ int isPari(Node x) {
 
 int main() {
 	BinarySearchTree t = new_tree();
-	/*Node n = NULL;*/
+
 	tree_insert(t, new_node(7));
 	tree_insert(t, new_node(11));
 	tree_insert(t, new_node(5));
 	tree_insert(t, new_node(6));
-	/*n = new_node(7);
+
+	/*Node n = NULL;
+
+	n = new_node(7);
+	printf("%p\n", (void*)n);
 	tree_insert(t, n);
-	free(n);
 
 	n = new_node(11);
+	printf("%p\n", (void*)n);
 	tree_insert(t, n);
-	free(n);
 
 	n = new_node(5);
 	tree_insert(t, n);
-	free(n);
 
 	n = new_node(6);
-	tree_insert(t, n);
-	free(n);*/
+	tree_insert(t, n);*/
 
 	/*printf("# foglie: %d\n", isPari(t->root));*/
 	
-	//preorder(t->root);
-	printf("%d\n", t->root->key);
+	preorder(t->root);
+
+	/*printf("%d\n", t->root->key);
 	printf("%d\n", t->root->left->key);
-	printf("%d\n", t->root->right->key);
+	printf("%d\n", t->root->right->key);*/
+	
 	//printf("Visita in ampiezza:\n");
 	//BreadthFirstSearch(t->root);
 	return 0;
