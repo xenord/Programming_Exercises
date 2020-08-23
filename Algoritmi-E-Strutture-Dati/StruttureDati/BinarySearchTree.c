@@ -15,14 +15,10 @@ Node new_node(int key)
 {
 	Node n = NULL;
 	n = (Node)malloc(sizeof(struct node *));
-	if (n != NULL) {
-		n->key = key;
-		n->p = NULL;
-		n->left = NULL;
-		n->right = NULL;
-	} else {
-		printf("Malloc fail\n");
-	}
+	n->key = key;
+	n->p = NULL;
+	n->left = NULL;
+	n->right = NULL;
 	return n;
 }
 
@@ -49,13 +45,10 @@ void tree_insert(BinarySearchTree t, Node z)
 
 	z->p = y;
 	if (y == NULL) {
-		printf("primo caso\n");
 		t->root = z;
 	} else if (z->key < y->key) {
-		printf("Secondo caso\n");
 		y->left = z;
 	} else {
-		printf("Terzo caso\n");
 		y->right = z;
 	}
 }
@@ -127,6 +120,15 @@ void tree_delete(BinarySearchTree t, Node z)
 	}
 }
 
+void preorder(Node n)
+{
+	if (n != NULL) {
+		printf("%d\n", n->key);
+		preorder(n->left);
+		preorder(n->right);
+	}
+}
+
 void BreadthFirstSearch(Node n)
 {
 	Queue q = initqueue();
@@ -135,8 +137,12 @@ void BreadthFirstSearch(Node n)
 		QNode e = dequeue(q);
 		if (e != NULL) {
 			printf("%d\n", e->key->key);
-			enqueue(q, e->key->left);
-			enqueue(q, e->key->right);
+			if (e->key->left != NULL) {
+				enqueue(q, e->key->left);
+			}
+			if (e->key->right != NULL) {
+				enqueue(q, e->key->right);
+			}
 		}
 	}
 }

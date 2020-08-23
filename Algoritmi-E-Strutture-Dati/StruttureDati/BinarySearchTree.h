@@ -26,6 +26,7 @@ Node tree_search(Node x, int k);
 Node tree_minimum(Node x);
 Node tree_successor(Node x);
 void tree_delete(BinarySearchTree t, Node z);
+void preorder(Node n);
 void BreadthFirstSearch(Node n);
 
 #endif
