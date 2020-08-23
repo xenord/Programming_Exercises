@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "BinarySearchTree.h"
 #include "Queue.h"
 
-QNode new(int k){
+QNode new(Node k){
 	QNode n = NULL;
-	n = (QNode) malloc(sizeof(struct node*));
+	n = (QNode) malloc(sizeof(struct qnode*));
 	n->key = k;
 	n->next = NULL;
 	return n;
@@ -28,10 +30,10 @@ int emptyqueue(Queue q)
 }
 
 /*post: inserisce elem in coda se la coda non e' piena */
-void enqueue(Queue q, int k)
+void enqueue(Queue q, Node k)
 {
 	if (q->head == NULL){
-    	q->tail = new(k);
+		q->tail = new(k);
 		q->head = q->tail;
 	} else{
 		q->tail->next = new(k);
@@ -50,14 +52,14 @@ QNode dequeue(Queue q)
 	ris = temp;
 	q->head = q->head->next;
   	if (temp == q->tail) {
-    	q->tail = NULL;
-    }
+		q->tail = NULL;
+    	}
 	free(temp);
   	(q->size)--;
-  	return ris; 
+	return ris; 
 }
 
-int first(Queue q)
+Node first(Queue q)
 {
   return q->head->key;
 }

@@ -1,12 +1,12 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-struct node{
-	int key;
-	struct node * next;
+struct qnode{
+	Node key;
+	struct qnode * next;
 };
 
-typedef struct node * QNode;
+typedef struct qnode * QNode;
 
 struct queue{
 	QNode head;
@@ -18,9 +18,9 @@ typedef struct queue *Queue;
 
 Queue initqueue();
 int emptyqueue(Queue q);
-void enqueue(Queue q, int elem);
+void enqueue(Queue q, Node elem);
 QNode dequeue(Queue q);
-int first(Queue q);
+Node first(Queue q);
 int size(Queue q);
 
 #endif

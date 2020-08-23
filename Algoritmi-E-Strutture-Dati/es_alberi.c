@@ -32,16 +32,22 @@ int main() {
 
 	n = new_node(7);
 	tree_insert(t,n);
+	free(n);
 
 	n = new_node(11);
 	tree_insert(t,n);
+	free(n);
 
 	n = new_node(5);
 	tree_insert(t,n);
+	free(n);
 
 	n = new_node(6);
 	tree_insert(t,n);
+	free(n);
 
-	printf("# foglie: %d\n", isPari(t->root));
+	/*printf("# foglie: %d\n", isPari(t->root));*/
+	printf("Visita in ampiezza:\n");
+	BreadthFirstSearch(t->root);
 	return 0;
 }
