@@ -2,19 +2,19 @@
 #define BINARYSEARCHTREE_H
 
 
-struct node{
+typedef struct node{
 	/**/
 	struct node* p;
 	struct node* left;
 	struct node* right;
 	int key;
-};
+} node;
 
 typedef struct node *Node;
 
 struct tree{
 	Node root;
-};
+} tree;
 
 typedef struct tree *BinarySearchTree;
 
@@ -28,6 +28,7 @@ Node tree_successor(Node x);
 void tree_delete(BinarySearchTree t, Node z);
 void preorder(Node n);
 void BreadthFirstSearch(Node n);
+int tree_height(Node x);
 
 #endif
 

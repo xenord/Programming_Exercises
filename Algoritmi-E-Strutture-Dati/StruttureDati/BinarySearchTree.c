@@ -6,8 +6,8 @@
 BinarySearchTree new_tree() 
 {
 	BinarySearchTree t = NULL;
-	t = malloc(sizeof(struct tree *));
-	printf("Tree address: %p\n", (void*)t);
+	t = malloc(sizeof(struct tree));
+	/*printf("Tree address: %p\n", (void*)t);*/
 	t->root = NULL;
 	return t;
 }
@@ -15,9 +15,9 @@ BinarySearchTree new_tree()
 Node new_node(int key) 
 {
 	Node n = NULL;
-	n = malloc(sizeof(struct node *));
-	printf("Node address: %p\n", (void*)n);
-	printf("Save this %d\n", key);
+	n = malloc(sizeof(struct node));
+	/*printf("Node address: %p\n", (void*)n);*/
+	/*printf("Save this %d\n", key);*/
 	n->key = key;
 	n->p = NULL;
 	n->left = NULL;
@@ -127,7 +127,6 @@ void preorder(Node n)
 {
 	if (n != NULL) {
 		printf("%d\n", n->key);
-		printf("Visit Node address: %p\n", (void*)n);
 		preorder(n->left);
 		preorder(n->right);
 	}
@@ -136,17 +135,31 @@ void preorder(Node n)
 void BreadthFirstSearch(Node n)
 {
 	Queue q = initqueue();
+	printf("Visita in ampiezza:\n");
 	enqueue(q, n);
 	while (!emptyqueue(q)) {
 		QNode e = dequeue(q);
-		if (e != NULL) {
-			printf("%d\n", e->key->key);
-			if (e->key->left != NULL) {
-				enqueue(q, e->key->left);
-			}
-			if (e->key->right != NULL) {
-				enqueue(q, e->key->right);
-			}
+		if (e != NULL && e->node != NULL) {
+			printf("%d\n", e->node->key);
+			enqueue(q, e->node->left);
+			enqueue(q, e->node->right);
 		}
 	}
+}
+
+int max (int x, int y) {
+	if (x >= y) {
+		return x;
+	}
+	return y;
+}
+
+int tree_height(Node u)
+{
+	if (u == NULL || (u->left == NULL && u->right == NULL)) {
+		return 0;
+	}
+	int a = tree_height(u->left);
+	int b = tree_height(u->right);
+	return max(a, b) + 1;
 }

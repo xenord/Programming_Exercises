@@ -4,10 +4,11 @@
 #include "BinarySearchTree.h"
 #include "Queue.h"
 
-QNode new(Node k){
+QNode new(Node k)
+{
 	QNode n = NULL;
-	n = (QNode) malloc(sizeof(struct qnode*));
-	n->key = k;
+	n = (QNode)malloc(sizeof(struct qnode));
+	n->node = k;
 	n->next = NULL;
 	return n;
 }
@@ -16,7 +17,7 @@ QNode new(Node k){
 Queue initqueue()
 {
 	Queue q;
-	q = (Queue) malloc(sizeof(struct queue));
+	q = malloc(sizeof(struct queue));
 	q->head = NULL;
 	q->tail = NULL;
 	q->size = 0;
@@ -53,15 +54,15 @@ QNode dequeue(Queue q)
 	q->head = q->head->next;
   	if (temp == q->tail) {
 		q->tail = NULL;
-    	}
-	free(temp);
+    }
+	//free(temp);
   	(q->size)--;
 	return ris; 
 }
 
 Node first(Queue q)
 {
-  return q->head->key;
+  return q->head->node;
 }
 
 /*post: ritorna il numero di elementi nella coda */

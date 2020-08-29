@@ -1,10 +1,10 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-struct qnode{
-	Node key;
+typedef struct qnode{
+	Node node;
 	struct qnode * next;
-};
+} qnode;
 
 typedef struct qnode * QNode;
 
@@ -12,7 +12,7 @@ struct queue{
 	QNode head;
 	QNode tail;
 	int size;
-};
+}queue;
 
 typedef struct queue *Queue;
 
